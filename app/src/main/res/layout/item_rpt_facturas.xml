@@ -91,7 +91,7 @@
                             android:textAlignment="textEnd"
                             android:text="C$ 120,250.00"
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                            android:textColor="@color/light_blue_400"
+                            android:textColor="@color/colorAccent"
                             android:textStyle="bold" />
                     </LinearLayout>
 

@@ -103,7 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.app.gmv3.utilities.SemiCircleView
+            <com.app.gmv3innova.utilities.SemiCircleView
                 android:id="@+id/id_semi_circulo"
                 android:layout_gravity="center"
                 android:layout_width="230dp"

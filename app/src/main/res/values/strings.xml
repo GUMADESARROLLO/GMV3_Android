@@ -2,7 +2,7 @@
 <resources>
 
     <!--application name-->
-    <string name="app_name">GMV</string>
+    <string name="app_name">GMV INNOVA</string>
 
     <!--bottom navigation-->
     <string name="title_nav_recent">ARTICULOS</string>
@@ -100,6 +100,7 @@
     <string name="pref_title_address">Dirección</string>
     <string name="pref_title_ruta">Ruta</string>
     <string name="pref_title_password">Contraseña</string>
+    <string name="pref_Type">Tipo</string>
     <string name="default_your_name">Su Nombre</string>
     <string name="default_your_email">Su.email@gmail.com</string>
     <string name="default_your_phone">+50500000000</string>
@@ -179,8 +180,8 @@
     <string name="equals"></string>
     <string name="action_reporte_visita">Reporte Visita</string>
     <string name="action_commit_factura">Comentario Factura</string>
-    <string name="about_text">App oficial de Preventas UNIMARK es basada en la API de Internas de la empresa para una mayor velocidad y seguridad.
-                              Este software está bajo politicas de desarrollo Internas de UNIMARK S,A.</string>
+    <string name="about_text">App oficial de Preventas INNOVA INDUSTRIA S,A es basada en la API de Internas de la empresa para una mayor velocidad y seguridad.
+                              Este software está bajo politicas de desarrollo Internas de INNOVA INDUSTRIA S,A.</string>
     <string name="title_nav_promo">PROMOS</string>
     <string name="short_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
     <string name="action_push_pin">Fijar</string>

@@ -85,7 +85,7 @@
                         android:gravity="center_vertical"
                         android:text="Nombre Cliente"
                         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                        android:textColor="@color/grey_90" />
+                        android:textColor="@color/colorPrimary" />
 
 
                     <LinearLayout
@@ -109,7 +109,7 @@
                             android:gravity="center_vertical"
                             android:text="00000"
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                            android:textColor="@color/light_blue_400"
+                            android:textColor="@color/colorAccent"
                             android:textStyle="bold" />
 
                     </LinearLayout>

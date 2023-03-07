@@ -2,9 +2,9 @@
 <resources>
 
     <!--app main color-->
-    <color name="colorPrimaryDark">#003044</color>
-    <color name="colorPrimary">#006690</color>
-    <color name="colorAccent">#009cdd</color>
+    <color name="colorPrimaryDark">#831F82</color>
+    <color name="colorPrimary">#831F82</color>
+    <color name="colorAccent">#F39200</color>
     <color name="blue_50">#E3F2FD</color>
     <color name="overlay_dark_30">#4D000000</color>
     <color name="overlay_dark_40">#66000000</color>

@@ -42,6 +42,7 @@
                 android:orientation="horizontal">
 
                 <ImageButton
+                    android:visibility="invisible"
                     android:id="@+id/id_history_nc"
                     android:layout_width="?attr/actionBarSize"
                     android:layout_height="?attr/actionBarSize"
@@ -86,7 +87,7 @@
                     android:layout_height="?attr/actionBarSize"
                     android:layout_margin="@dimen/spacing_middle"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:tint="@color/available"
+                    android:tint="@color/colorPrimary"
                     app:srcCompat="@drawable/ic_history" />
 
             </LinearLayout>
@@ -98,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:text="Nombre del cliente"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/grey_80"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -133,7 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_large"
-                app:cardBackgroundColor="@color/colorAccent"
+                app:cardBackgroundColor="@color/colorPrimary"
                 app:cardCornerRadius="6dp"
                 app:cardElevation="2dp"
                 app:cardUseCompatPadding="true">
@@ -291,7 +292,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:background="@color/transparent"
-                            android:tint="@color/colorAccent"
+                            android:tint="@color/colorPrimary"
                             app:srcCompat="@drawable/ic_event" />
 
                         <TextView
@@ -312,7 +313,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:tint="@color/colorAccent"
+                                android:tint="@color/colorPrimary"
                                 app:srcCompat="@drawable/shape_round_corner" />
 
                             <TextView
@@ -345,7 +346,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:background="@color/transparent"
-                            android:tint="@color/colorAccent"
+                            android:tint="@color/colorPrimary"
                             app:srcCompat="@drawable/ic_event" />
 
                         <TextView
@@ -366,7 +367,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:tint="@color/colorAccent"
+                                android:tint="@color/colorPrimary"
                                 app:srcCompat="@drawable/shape_round_corner" />
 
                             <TextView
@@ -399,7 +400,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:background="@color/transparent"
-                            android:tint="@color/colorAccent"
+                            android:tint="@color/colorPrimary"
                             app:srcCompat="@drawable/ic_event" />
 
                         <TextView
@@ -420,7 +421,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:tint="@color/colorAccent"
+                                android:tint="@color/colorPrimary"
                                 app:srcCompat="@drawable/shape_round_corner" />
 
                             <TextView
@@ -453,7 +454,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:background="@color/transparent"
-                            android:tint="@color/colorAccent"
+                            android:tint="@color/colorPrimary"
                             app:srcCompat="@drawable/ic_event" />
 
                         <TextView
@@ -474,7 +475,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:tint="@color/colorAccent"
+                                android:tint="@color/colorPrimary"
                                 app:srcCompat="@drawable/shape_round_corner" />
 
                             <TextView
@@ -507,7 +508,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:background="@color/transparent"
-                            android:tint="@color/colorAccent"
+                            android:tint="@color/colorPrimary"
                             app:srcCompat="@drawable/ic_event" />
 
                         <TextView
@@ -528,7 +529,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:tint="@color/colorAccent"
+                                android:tint="@color/colorPrimary"
                                 app:srcCompat="@drawable/shape_round_corner" />
 
                             <TextView
@@ -560,7 +561,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:background="@color/transparent"
-                            android:tint="@color/colorAccent"
+                            android:tint="@color/colorPrimary"
                             app:srcCompat="@drawable/ic_event" />
 
                         <TextView
@@ -581,7 +582,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:tint="@color/colorAccent"
+                                android:tint="@color/colorPrimary"
                                 app:srcCompat="@drawable/shape_round_corner" />
 
                             <TextView

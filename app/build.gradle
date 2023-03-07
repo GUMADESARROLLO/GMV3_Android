@@ -20,17 +20,17 @@ android {
     }
     compileSdkVersion 29
     defaultConfig {
-        applicationId 'com.app.unimark.gmv3'
+        applicationId 'com.app.unimark.gmv3innova'
 
-        manifestPlaceholders = [onesignal_app_id               : "d97b7af8-b696-418f-875e-8547e9fe7581",
+        manifestPlaceholders = [onesignal_app_id               : "e13c272d-3354-4120-a832-347468c46776",
 
                                 // Project number pulled from dashboard, local value is ignored.
                                 onesignal_google_project_number: "REMOTE"]
 
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 13
-        versionName '3.4.7'
+        versionCode 14
+        versionName '3.4.8'
     }
     buildTypes {
         release {
@@ -68,6 +68,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.7.0'             // image loader
     implementation 'de.hdodenhof:circleimageview:2.1.0'
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+
 
 
 }

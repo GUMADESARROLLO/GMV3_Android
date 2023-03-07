@@ -34,6 +34,64 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267914032173:android:98704569053ec539b4b4a4",
+        "android_client_info": {
+          "package_name": "com.app.unimark.gmv3innova"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267914032173-qeon3poe4nhimp6tagbndn4vl5t73rc7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxoR3AJhk6kt5ykrhOYr7SZGDL6BycwV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267914032173-qeon3poe4nhimp6tagbndn4vl5t73rc7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267914032173:android:b6e8fe06ed434eb7b4b4a4",
+        "android_client_info": {
+          "package_name": "com.guma.tiendaumk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267914032173-qeon3poe4nhimp6tagbndn4vl5t73rc7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxoR3AJhk6kt5ykrhOYr7SZGDL6BycwV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267914032173-qeon3poe4nhimp6tagbndn4vl5t73rc7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

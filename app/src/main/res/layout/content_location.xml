@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/spacing_large"
     android:paddingTop="@dimen/spacing_large"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.app.gmv3.activities.ActivityVerificacion"
+    tools:context="com.app.gmv3innova.activities.ActivityVerificacion"
 
     tools:showIn="@layout/activity_location">
 
