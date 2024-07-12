@@ -3,9 +3,9 @@ package com.app.gmv3innova;
 public class Config {
 
     //your admin panel url
-    //public static final String ADMIN_PANEL_URL = "http://192.168.1.139:8448/gmv3_innova";
+    public static final String ADMIN_PANEL_URL = "http://192.168.1.139/gmv3_innova";
     //public static final String ADMIN_PANEL_URL = "http://186.1.15.166:8448/gmv3_innova";
-    public static final String ADMIN_PANEL_URL = "http://186.1.15.164:8448/GMV3_INN";
+    //public static final String ADMIN_PANEL_URL = "http://186.1.15.164:8448/GMV3_INN";
 
 
 
