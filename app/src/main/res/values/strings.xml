@@ -39,6 +39,7 @@
     <string name="action_cart">Mi Carrito</string>
     <string name="action_clear">Limpiar Todo</string>
     <string name="action_add_client">Clientes</string>
+    <string name="action_print_resumen">Imprimir</string>
     <!--menu, cart and order-->
     <string name="search_query_text">Buscar&#8230;</string>
     <string name="confirm">Confirmacion</string>
@@ -78,7 +79,6 @@
     <string name="post_submit_msg">Por Favor, espere.</string>
 
 
-
     <string name="checkout_dialog_msg">¿Estás seguro de que quieres Enviarlo?</string>
     <string name="checkout_submit_title">Porfavor Espere</string>
     <string name="checkout_submit_msg">Enviar su Orden&#8230;</string>
@@ -91,6 +91,7 @@
     <string name="title_history">Historial de pedidos</string>
     <string name="title_profile">Perfil de usuario</string>
     <string name="btn_process_checkout">PROCESAR PEDIDO</string>
+
 
     <!--profile preferences-->
     <string name="pref_group_profile">PERFIL</string>

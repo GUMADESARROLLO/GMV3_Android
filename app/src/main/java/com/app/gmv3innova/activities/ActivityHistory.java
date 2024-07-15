@@ -354,10 +354,13 @@ public class ActivityHistory extends AppCompatActivity {
         ((ImageView) view.findViewById(R.id.img_copy)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-//                ClipData clip = ClipData.newPlainText("Order Id", code.get(position));
-//                clipboard.setPrimaryClip(clip);
-//                Toast.makeText(ActivityHistory.this, R.string.msg_copy, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getApplicationContext(), PreviewActivity.class);
+
+                intent.putExtra("num_pedido", code.get(position));
+                startActivity(intent);
+
+
 
             }
         });

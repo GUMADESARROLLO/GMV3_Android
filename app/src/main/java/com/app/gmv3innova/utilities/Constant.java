@@ -21,6 +21,7 @@ public class Constant {
     public static final String GET_PROFIL_USER = BASE_URL + "/api/api.php?get_perfil_user=";
     public static final String PUSH_PIN = BASE_URL + "/api/api.php?push_pin=";
     public static final String GET_DETALLE_FACTURA = BASE_URL + "/api/api.php?get_detalle_factura=";
+    public static final String GET_DETALLE_PEDIDO = BASE_URL + "/api/api.php?get_detalle_pedido=";
     public static final String GET_NC = BASE_URL + "/api/api.php?get_nc=";
     public static final String GET_LAST_3M = BASE_URL + "/api/api.php?last_3m=";
     public static final String GET_NO_FACTURADO = BASE_URL + "/api/api.php?articulos_sin_facturar=";

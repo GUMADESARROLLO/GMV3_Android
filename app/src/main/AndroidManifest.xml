@@ -2,20 +2,31 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.gmv3innova">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+
     <application
-        android:name="com.app.gmv3innova.activities.MyApplication"
+        android:name=".activities.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.app.gmv3innova.activities.ActivityEstadisticas"></activity>
         <activity
-            android:name="com.app.gmv3innova.activities.CardcreditActivity"
+            android:name=".activities.PreviewActivity"
+            android:exported="false" />
+        <activity android:name=".activities.ActivityEstadisticas" />
+        <activity
+            android:name=".activities.CardcreditActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivitySplash"
+            android:name=".activities.ActivitySplash"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -25,10 +36,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityActualizarProducto"
+            android:name=".activities.ActivityActualizarProducto"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -37,75 +48,74 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="com.app.gmv3innova.activities.ActivityViewFactura" />
-        <activity android:name="com.app.gmv3innova.activities.ActivityUltimos3m" />
-        <activity android:name="com.app.gmv3innova.activities.ActivityNotaCredito" />
+        <activity android:name=".activities.ActivityViewFactura" />
+        <activity android:name=".activities.ActivityUltimos3m" />
+        <activity android:name=".activities.ActivityNotaCredito" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityReportes"
+            android:name=".activities.ActivityReportes"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityInteligenciaMercado"
+            android:name=".activities.ActivityInteligenciaMercado"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.ActivityDetailsPromo" />
+        <activity
+            android:name=".activities.ActivityVerificacion"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityDetailsPromo" />
-        <activity
-            android:name="com.app.gmv3innova.activities.ActivityVerificacion"
+            android:name=".activities.ActivityNoFacturado"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityNoFacturado"
+            android:name=".activities.ActivityComentario"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityComentario"
+            android:name=".activities.ActivityPerfilCliente"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityPerfilCliente"
+            android:name=".activities.ActivityLogin"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityLogin"
+            android:name=".activities.ActivityCart"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityCart"
+            android:name=".activities.ActivityProduct"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityProduct"
+            android:name=".activities.ActivityCheckOutClientes"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityCheckOutClientes"
+            android:name=".activities.ActivityProductDetail"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityProductDetail"
+            android:name=".activities.ActivityCheckout"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityCheckout"
+            android:name=".activities.ActivityHistory"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityHistory"
+            android:name=".activities.ActivityHelp"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityHelp"
+            android:name=".activities.ActivityImageDetail"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityImageDetail"
+            android:name=".activities.ActivityNotificationDetail"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.gmv3innova.activities.ActivityNotificationDetail"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.app.gmv3innova.activities.ActivitySettings"
+            android:name=".activities.ActivitySettings"
             android:screenOrientation="portrait"
             android:theme="@style/Pref" /> <!-- fcm -->
-        <service android:name="com.app.gmv3innova.notification.MyFirebaseMessagingService">
+        <service android:name=".notification.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name="com.app.gmv3innova.notification.MyFirebaseInstanceIdService">
+        <service android:name=".notification.MyFirebaseInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
         <service
-            android:name="com.app.gmv3innova.notification.NotificationExtenderExample"
+            android:name=".notification.NotificationExtenderExample"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE">
             <intent-filter>
@@ -113,14 +123,5 @@
             </intent-filter>
         </service>
     </application>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
 
 </manifest>
