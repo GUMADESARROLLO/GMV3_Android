@@ -27,7 +27,7 @@ android {
                                 // Project number pulled from dashboard, local value is ignored.
                                 onesignal_google_project_number: "REMOTE"]
 
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 14
         versionName '3.4.8'

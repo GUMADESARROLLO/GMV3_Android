@@ -5,13 +5,22 @@ import static com.app.gmv3innova.utilities.Constant.GET_DETALLE_PEDIDO;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.widget.NestedScrollView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +28,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.app.gmv3innova.R;
+import com.app.gmv3innova.adapters.PdfDocumentAdapter;
 import com.app.gmv3innova.models.PEDIDO_LINEAS;
 import com.app.gmv3innova.utilities.DBHelper;
 import com.google.gson.Gson;
@@ -27,6 +37,9 @@ import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 public class PreviewActivity extends AppCompatActivity {
@@ -40,6 +53,10 @@ public class PreviewActivity extends AppCompatActivity {
     TextView txt_dir;
     TextView txt_total;
     TextView txt_date;
+
+
+    NestedScrollView nestedScrollView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +71,8 @@ public class PreviewActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(R.string.checkout_order_list);
         }
+        nestedScrollView = findViewById(R.id.id_nested_scroll_view);
+
         txt_num_pedido = findViewById(R.id.txt_num_pedido);
         txt_code_pedido = findViewById(R.id.txt_code_pedido);
         txt_name = findViewById(R.id.txt_name);
@@ -61,6 +80,17 @@ public class PreviewActivity extends AppCompatActivity {
         txt_dir = findViewById(R.id.txt_dir);
         txt_total = findViewById(R.id.txt_total);
         txt_date = findViewById(R.id.txt_fecha);
+
+        ((TextView) findViewById(R.id.btn_print)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                printNestedScrollView(nestedScrollView);
+
+
+
+            }
+        });
 
         initDB();
     }
@@ -153,7 +183,7 @@ public class PreviewActivity extends AppCompatActivity {
 
             case R.id.btn_mn_print:
                 Toast.makeText(this, "Print Resumen", Toast.LENGTH_SHORT).show();
-                onPrint();
+                printNestedScrollView(nestedScrollView);
 
                 return true;
 
@@ -166,9 +196,60 @@ public class PreviewActivity extends AppCompatActivity {
         super.onBackPressed();
         finish();
     }
-    public void onPrint(){
+    public void printNestedScrollView(NestedScrollView nestedScrollView) {
+        // Primero, medir y disposición del contenido del NestedScrollView
+        nestedScrollView.measure(
+                View.MeasureSpec.makeMeasureSpec(nestedScrollView.getWidth(), View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+        );
+        nestedScrollView.layout(0, 0, nestedScrollView.getMeasuredWidth(), nestedScrollView.getMeasuredHeight());
 
+
+        // Obtener bitmap del NestedScrollView
+        Bitmap bitmap = getBitmapFromView(nestedScrollView);
+
+        // Guardar bitmap como PDF
+        File pdfFile = new File(getExternalFilesDir(null), "document.pdf");
+        try {
+            saveBitmapAsPDF(bitmap, pdfFile);
+            printPDF(pdfFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+    private Bitmap getBitmapFromView(View view) {
+        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        view.draw(canvas);
+        return bitmap;
+    }
+    private void saveBitmapAsPDF(Bitmap bitmap, File file) throws IOException {
+        PdfDocument document = new PdfDocument();
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(bitmap.getWidth(), bitmap.getHeight(), 1).create();
+        PdfDocument.Page page = document.startPage(pageInfo);
+        Canvas canvas = page.getCanvas();
+        canvas.drawBitmap(bitmap, 0, 0, null);
+        document.finishPage(page);
+
+        try (FileOutputStream out = new FileOutputStream(file)) {
+            document.writeTo(out);
+        }
+
+        document.close();
+    }
+    private void printPDF(File file) {
+        PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
+        try {
+            PrintDocumentAdapter pda = new PdfDocumentAdapter(this, file.getAbsolutePath());
+            printManager.print("Document", pda, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 
 
 }
