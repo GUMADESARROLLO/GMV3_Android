@@ -23,7 +23,7 @@ public class ActivitySplash extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_splash_v2);
         MyApp = MyApplication.getInstance();
         if (Config.ENABLE_RTL_MODE) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {

@@ -33,13 +33,13 @@ public class FragmentProfile extends Fragment {
     TextView txt_user_email;
     TextView txt_user_phone;
     TextView txt_user_address;
-    MaterialRippleLayout btn_edit_user;
+    LinearLayout btn_edit_user;
     LinearLayout lyt_root;
     MyApplication MyApp;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_new_profile, container, false);
 
         sharedPref = new SharedPref(getActivity());
 
@@ -87,13 +87,13 @@ public class FragmentProfile extends Fragment {
             }
         });
 
-        view.findViewById(R.id.id_mis_stat).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ActivityEstadisticas.class);
-                startActivity(intent);
-            }
-        });
+//        view.findViewById(R.id.id_mis_stat).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), ActivityEstadisticas.class);
+//                startActivity(intent);
+//            }
+//        });
         view.findViewById(R.id.Reportes).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

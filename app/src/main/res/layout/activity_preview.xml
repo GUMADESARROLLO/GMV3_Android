@@ -39,39 +39,37 @@
             <LinearLayout
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:layout_marginTop="5sp"
+                android:layout_marginTop="15sp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/logo_print"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="3"
-                    android:text="INNNOVA"
+                    android:text="Km 19½ Carretera Vieja a Tipitapa | 2298 - 1522"
                     android:gravity="center_horizontal"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                    android:textColor="@color/black"
-                    app:fontFamily="sans-serif-medium" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLines="3"
-                    android:text="Innova Industrias S.A. | 2298 - 1522"
-                    android:gravity="center_horizontal"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/black"
-                    app:fontFamily="sans-serif-medium" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/black" />
                 <TextView
                     android:id="@+id/txt_fecha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
+                    android:textSize="18sp"
                     android:text="00/00/000 00:00 "
-                    android:textAllCaps="true"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/black"
-                    app:fontFamily="sans-serif-medium"/>
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/black"/>
 
                 <LinearLayout
                     android:layout_marginTop="10sp"
@@ -83,11 +81,12 @@
                         android:id="@+id/txt_num_pedido"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" - "
+                        android:text="AXJKH8732"
                         android:textAllCaps="true"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                        android:textColor="@color/black"
-                        app:fontFamily="sans-serif-medium"/>
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/black"/>
 
                     <View
                         android:layout_width="0dp"
@@ -99,9 +98,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="NUM: -"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                        android:textColor="@color/black"
-                        app:fontFamily="sans-serif-medium"/>
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/black"/>
 
                 </LinearLayout>
 
@@ -113,13 +113,13 @@
 
                     <TextView
                         android:id="@+id/txt_name"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Cargando . . ."
                         android:textAllCaps="true"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                        android:textColor="@color/black"
-                        app:fontFamily="sans-serif-medium"/>
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/black" />
 
                     <View
                         android:layout_width="0dp"
@@ -144,19 +144,74 @@
                     android:layout_height="wrap_content"
                     android:maxLines="3"
                     android:text="DETALLE: - "
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/black"
-                    app:fontFamily="sans-serif-medium" />
-
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/black" />
                 <TextView
                     android:layout_marginTop="5sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:text="*****************************************************************************"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:text="*************************************************"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/black"  />
+
+                <LinearLayout
+                    android:layout_marginTop="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DESCRIPCION"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/black" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CANT."
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/black" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10sp"
+                        android:text=" P/U "
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+                <TextView
+                    android:layout_marginTop="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="*************************************************"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/black"  />
 
                 <LinearLayout
                     android:layout_marginTop="5sp"
@@ -175,22 +230,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-
-
-                                <TextView
-                                    android:id="@+id/product_name"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:text=""
-                                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
-
-                            </LinearLayout>
+                            <TextView
+                                android:id="@+id/product_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text=""
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                android:textColor="@color/black" />
 
                         </LinearLayout>
 
@@ -203,17 +251,63 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_marginTop="5sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:text="*****************************************************************************"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:text="*************************************************"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/black"  />
 
+                <TextView
+                    android:id="@+id/id_resumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="EL RESUMEN"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/black"  />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/spacing_middle"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large"
+                    android:paddingTop="@dimen/spacing_middle">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:textAlignment="center"
+                            android:id="@+id/numero_de_orden"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="* * * GRACIAS POR SU COMPRA * * *"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                            android:textColor="@color/black"  />
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
 
             </LinearLayout>
+
+
 
         </androidx.core.widget.NestedScrollView>
 
@@ -241,7 +335,7 @@
                 android:id="@+id/txt_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$ 210.50"
+                android:text="00.00 NIO"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"
                 android:textStyle="bold" />

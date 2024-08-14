@@ -13,12 +13,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-public class PdfDocumentAdapter extends PrintDocumentAdapter {
+public class AdapterPdfDocument extends PrintDocumentAdapter {
 
     private final String path;
     private final Context context;
 
-    public PdfDocumentAdapter(Context context, String path) {
+    public AdapterPdfDocument(Context context, String path) {
         this.context = context;
         this.path = path;
     }

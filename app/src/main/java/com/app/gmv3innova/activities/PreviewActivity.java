@@ -28,7 +28,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.app.gmv3innova.R;
-import com.app.gmv3innova.adapters.PdfDocumentAdapter;
+import com.app.gmv3innova.adapters.AdapterPdfDocument;
 import com.app.gmv3innova.models.PEDIDO_LINEAS;
 import com.app.gmv3innova.utilities.DBHelper;
 import com.google.gson.Gson;
@@ -81,13 +81,11 @@ public class PreviewActivity extends AppCompatActivity {
         txt_total = findViewById(R.id.txt_total);
         txt_date = findViewById(R.id.txt_fecha);
 
-        ((TextView) findViewById(R.id.btn_print)).setOnClickListener(new View.OnClickListener() {
+        (findViewById(R.id.btn_print)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 printNestedScrollView(nestedScrollView);
-
-
 
             }
         });
@@ -99,8 +97,6 @@ public class PreviewActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         num_pedido = intent.getStringExtra("num_pedido");
-
-        Log.e("TAG_num_pedido", "initDB: "+ num_pedido );
 
         dbhelper = new DBHelper(this);
 
@@ -137,12 +133,12 @@ public class PreviewActivity extends AppCompatActivity {
 
     private void UIPedido(List<PEDIDO_LINEAS> DatosPedido){
 
-        txt_num_pedido.setText(DatosPedido.get(0).getPEDIDO_NUM());
+        txt_num_pedido.setText(("PEDIDO N.O: ").concat(DatosPedido.get(0).getPEDIDO_NUM()));
         txt_code_pedido.setText(DatosPedido.get(0).getPEDIDO_ID());
         txt_name.setText(DatosPedido.get(0).getPEDIDO_NOMBRE());
         txt_code_client.setText(DatosPedido.get(0).getPEDIDO_CLIENTE());
         txt_dir.setText(DatosPedido.get(0).getPEDIDO_DIR());
-        txt_total.setText(DatosPedido.get(0).getPEDIDO_TOTAL());
+        txt_total.setText(DatosPedido.get(0).getPEDIDO_TOTAL().replace("NIO",""));
         txt_date.setText(DatosPedido.get(0).getPEDIDO_FECHA());
 
         String[] data_order_list    = DatosPedido.get(0).getPEDIDO_ORDEN().split("],");
@@ -154,17 +150,24 @@ public class PreviewActivity extends AppCompatActivity {
             String[] Lineas_detalles    = data_order_list[i].split(";");
 
             String Quantity     = Lineas_detalles[0].replace("[","");
-            String prod_cod    = Lineas_detalles[1];
+            //String prod_cod    = Lineas_detalles[1];
             String Menu_name     = Lineas_detalles[2];
-            String Bonificado   = Lineas_detalles[3];
-            String _Sub_total_price   = Lineas_detalles[4];
+            //String Bonificado   = Lineas_detalles[3];
+            String _Sub_total_price   = Lineas_detalles[4].replace("NIO","");
 
-            str_detalles_linea += (Quantity + " [ " + prod_cod + " ] " + Menu_name + " " + Bonificado + " " + _Sub_total_price  + "\n\n");
+            //str_detalles_linea += (Quantity + " [ " + prod_cod + " ] " + Menu_name + " " + Bonificado + " " + _Sub_total_price  + "\n\n");
+            str_detalles_linea += (Menu_name + " | " + Quantity + " | " + _Sub_total_price + "\n\n");
 
         }
 
-        str_detalles_linea += data_order_list[cLineas].replace(";","").replace("[","").replace("]","");
         ((TextView) findViewById(R.id.product_name)).setText(str_detalles_linea);
+        String SubTotal = data_order_list[cLineas].replace(";","").replace("[","").replace("]","");
+        SubTotal = SubTotal.replace("Orden : ","SubTotal : ");
+
+        //String SubTotal = ("SubTotal: ").concat(DatosPedido.get(0).getPEDIDO_TOTAL()).concat("\n\n");
+
+        ((TextView) findViewById(R.id.id_resumen)).setText(SubTotal);
+
 
     }
 
@@ -182,7 +185,7 @@ public class PreviewActivity extends AppCompatActivity {
                 return true;
 
             case R.id.btn_mn_print:
-                Toast.makeText(this, "Print Resumen", Toast.LENGTH_SHORT).show();
+
                 printNestedScrollView(nestedScrollView);
 
                 return true;
@@ -240,7 +243,7 @@ public class PreviewActivity extends AppCompatActivity {
     private void printPDF(File file) {
         PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
         try {
-            PrintDocumentAdapter pda = new PdfDocumentAdapter(this, file.getAbsolutePath());
+            PrintDocumentAdapter pda = new AdapterPdfDocument(this, file.getAbsolutePath());
             printManager.print("Document", pda, null);
         } catch (Exception e) {
             e.printStackTrace();
