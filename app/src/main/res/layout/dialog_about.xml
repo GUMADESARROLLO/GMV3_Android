@@ -50,10 +50,10 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
                     android:tint="@color/colorPrimary"
-                    app:srcCompat="@drawable/logo_stander_full" />
+                    app:srcCompat="@drawable/logo_print" />
 
                 <TextView
                     android:layout_width="wrap_content"

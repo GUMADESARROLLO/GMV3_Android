@@ -161,8 +161,9 @@ public class PreviewActivity extends AppCompatActivity {
         }
 
         ((TextView) findViewById(R.id.product_name)).setText(str_detalles_linea);
+
         String SubTotal = data_order_list[cLineas].replace(";","").replace("[","").replace("]","");
-        SubTotal = SubTotal.replace("Orden : ","SubTotal : ");
+        SubTotal = SubTotal.replace("Orden : ","SubTotal : ").replace("NIO","");
 
         //String SubTotal = ("SubTotal: ").concat(DatosPedido.get(0).getPEDIDO_TOTAL()).concat("\n\n");
 

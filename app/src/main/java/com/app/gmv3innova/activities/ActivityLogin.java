@@ -7,12 +7,15 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.app.gmv3innova.BuildConfig;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.gmv3innova.R;
@@ -80,6 +83,8 @@ public class ActivityLogin extends AppCompatActivity implements Validator.Valida
 
         validator = new Validator(this);
         validator.setValidationListener(this);
+
+        ((TextView) findViewById(R.id.id_text_version)).setText(("GMV ").concat(BuildConfig.VERSION_NAME));
 
 
 
