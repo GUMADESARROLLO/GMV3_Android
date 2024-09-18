@@ -66,7 +66,7 @@
     <string name="checkout_add_comment">Comentario</string>
     <string name="no_order_menu">No orden</string>
     <string name="txt_order">Orden :</string>
-    <string name="txt_tax">Impuesto :</string>
+    <string name="txt_tax">IVA :</string>
     <string name="txt_total">Total :</string>
     <string name="txt_shipping">Envio</string>
     <string name="checkout_fill_form">por favor complete el formulario primero!</string>

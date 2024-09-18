@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -60,7 +61,7 @@ public class ActivityCheckout extends AppCompatActivity {
 
     RequestQueue requestQueue;
     Button btn_submit_order;
-    TextView edt_name, edt_email, edt_phone, edt_address, edt_order_list, edt_order_total,edt_iva,edt_total_precio,edt_id_pedido,txt_count;
+    TextView edt_name, edt_email, edt_phone, edt_address, edt_order_list, edt_order_total,edt_iva,edt_total_precio,edt_id_pedido,txt_count,txt_iva;
     String str_name, str_email, str_phone, str_address, str_order_list, str_order_total, str_comment="";
     String data_order_list = "";
     double str_tax;
@@ -151,7 +152,6 @@ public class ActivityCheckout extends AppCompatActivity {
         txt_count.setText(rcLista_Resumen.getItemCount() + " Item(s)");
 
 
-
         ((ImageView) findViewById(R.id.id_img_comment)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -195,7 +195,9 @@ public class ActivityCheckout extends AppCompatActivity {
         str_phone = edt_phone.getText().toString();
         str_address = edt_address.getText().toString();
         str_order_list = data_order_list;
-        str_order_total = edt_order_total.getText().toString();
+        str_order_total = edt_total_precio.getText().toString();
+
+
 
         if (str_name.equalsIgnoreCase("") ||
                 str_email.equalsIgnoreCase("") ||
@@ -352,16 +354,22 @@ public class ActivityCheckout extends AppCompatActivity {
             edt_order_total.setText(_Total_price + " " + str_currency_code);
 
         } else {
+
             data_order_list += "\n[" + getResources().getString(R.string.txt_order) + " " + _Order_price + " " + str_currency_code +";" +
-                    "\n" + getResources().getString(R.string.txt_tax) + " " + str_tax + " % : " + tax + " " + str_currency_code+";" +
+                    "\n" + getResources().getString(R.string.txt_tax) + " " + str_tax + " % : " + _tax + " " + str_currency_code+";" +
                     "\n" + getResources().getString(R.string.txt_total) + " " + _Total_price + " " + str_currency_code + "]";
 
             edt_order_total.setText(_Order_price + " " + str_currency_code);
-            edt_iva.setText(str_tax + " " + str_currency_code);
+            edt_iva.setText(str_tax + "% " + _tax + " " + str_currency_code);
             edt_total_precio.setText(_Total_price + " " + str_currency_code);
+
+            str_order_total = _Total_price;
+
+
         }
 
         edt_order_list.setText(str_comment);
+
 
     }
 
