@@ -355,12 +355,17 @@ public class ActivityCheckout extends AppCompatActivity {
 
         } else {
 
+//            data_order_list += "\n[" + getResources().getString(R.string.txt_order) + " " + _Order_price + " " + str_currency_code +";" +
+//                    "\n" + getResources().getString(R.string.txt_tax) + " " + str_tax + " % : " + _tax + " " + str_currency_code+";" +
+//                    "\n" + getResources().getString(R.string.txt_total) + " " + _Total_price + " " + str_currency_code + "]";
+
             data_order_list += "\n[" + getResources().getString(R.string.txt_order) + " " + _Order_price + " " + str_currency_code +";" +
-                    "\n" + getResources().getString(R.string.txt_tax) + " " + str_tax + " % : " + _tax + " " + str_currency_code+";" +
+                    "\n"  + " IVA : " + _tax + " " + str_currency_code+";" +
                     "\n" + getResources().getString(R.string.txt_total) + " " + _Total_price + " " + str_currency_code + "]";
 
-            edt_order_total.setText(_Order_price + " " + str_currency_code);
-            edt_iva.setText(str_tax + "% " + _tax + " " + str_currency_code);
+
+                    edt_order_total.setText(_Order_price + " " + str_currency_code);
+            edt_iva.setText(_tax + " " + str_currency_code);
             edt_total_precio.setText(_Total_price + " " + str_currency_code);
 
             str_order_total = _Total_price;
