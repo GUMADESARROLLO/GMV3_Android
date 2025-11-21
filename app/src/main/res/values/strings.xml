@@ -178,11 +178,11 @@
     <string name="plus">+</string>
     <string name="minus">-</string>
     <string name="ce">ce</string>
-    <string name="equals"></string>
+    <string name="equals">.</string>
     <string name="action_reporte_visita">Reporte Visita</string>
     <string name="action_commit_factura">Comentario Factura</string>
-    <string name="about_text">App oficial de Preventas INNOVA INDUSTRIA S,A es basada en la API de Internas de la empresa para una mayor velocidad y seguridad.
-                              Este software está bajo politicas de desarrollo Internas de INNOVA INDUSTRIA S,A.</string>
+    <string name="about_text">GMV utiliza la API interna de la empresa para brindar una experiencia segura y de alta velocidad.
+        Además, se rige por las políticas de desarrollo propias de INNOVA INDUSTRIA S,A.</string>
     <string name="title_nav_promo">PROMOS</string>
     <string name="short_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
     <string name="action_push_pin">Fijar</string>

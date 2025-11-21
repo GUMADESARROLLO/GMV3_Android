@@ -56,7 +56,7 @@ public class ActivityCart extends AppCompatActivity {
     ArrayList<ArrayList<Object>> data;
     public static ArrayList<String> product_id = new ArrayList<String>();
     public static ArrayList<String> product_name = new ArrayList<String>();
-    public static ArrayList<Integer> product_quantity = new ArrayList<Integer>();
+    public static ArrayList<Double> product_quantity = new ArrayList<Double>();
     public static ArrayList<String> product_bonificado = new ArrayList<String>();
     public static ArrayList<String> currency_code = new ArrayList<String>();
     public static ArrayList<Double> sub_total_price = new ArrayList<Double>();
@@ -283,7 +283,7 @@ public class ActivityCart extends AppCompatActivity {
 
             product_id.add(row.get(0).toString());
             product_name.add(row.get(1).toString());
-            product_quantity.add(Integer.parseInt(row.get(2).toString()));
+            product_quantity.add(Double.parseDouble(row.get(2).toString()));
             product_bonificado.add(row.get(3).toString());
             sub_total_price.add(Double.parseDouble(row.get(4).toString()));
 

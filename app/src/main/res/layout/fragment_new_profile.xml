@@ -401,7 +401,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Acerca de..."
+                        android:text="Acerca GMV"
                         android:textAppearance="@style/TextAppearance.Medium.Bold"
                         android:textSize="14sp" />
                     <View

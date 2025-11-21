@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class DBHelper extends SQLiteOpenHelper {
 
     private final static String DB_NAME = "gmv3_db";
-    public final static int DB_VERSION = 1;
+    public final static int DB_VERSION = 2;
     public static SQLiteDatabase db;
     private final Context context;
     private String DB_PATH;
@@ -213,7 +213,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return exist;
     }
 
-    public void addData(String id, String product_name, int quantity, double total_price, String currency_code, String product_image,String product_bonificado) {
+    public void addData(String id, String product_name, double quantity, double total_price, String currency_code, String product_image,String product_bonificado) {
         ContentValues values = new ContentValues();
         values.put(CART_ID, id);
         values.put(PRODUCT_NAME, product_name);

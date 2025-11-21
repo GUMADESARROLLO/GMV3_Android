@@ -186,15 +186,14 @@
             android:textColor="@color/grey_soft" />
 
         <Button
-            android:id="@+id/button_equals"
+            android:id="@+id/button_point"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/equals"
             android:textColor="@color/btnColorOperation"
-            android:textSize="30sp"
-            tools:visibility="invisible" />
+            android:textSize="30sp" />
 
 
 

@@ -669,12 +669,60 @@ public class ActivityProductDetail extends AppCompatActivity {
 
             }
         });
-        mView.findViewById(R.id.button_equals).setOnClickListener(new View.OnClickListener() {
+        mView.findViewById(R.id.button_point).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                String current = edtQuantity.getText().toString();
+
+                // 1. Evitar múltiple punto decimal
+                if (current.contains(".")) {
+                    return;
+                }
+
+                // 2. Si está vacío, agregar "0."
+                if (current.isEmpty()) {
+                    current = "0.";
+                } else {
+                    current = current.concat(".");
+                }
+
+                edtQuantity.setText(current);
+
+                // 3. Buscar posición
+                int position = row_arr.indexOf(current);
+
+                if (position == -1) {
+                    edtBonificado.setText("0");
+                } else {
+                    edtBonificado.setText(sList.get(position));
+                }
+
+                // 4. Validar número antes de convertir
+                double cnt_valor = 0.0;
+                try {
+                    // Esto puede fallar si termina en "0."
+                    if (!current.endsWith(".")) {
+                        cnt_valor = Double.parseDouble(current);
+                    }
+                } catch (Exception e) {
+                    return; // No continuar si hay error
+                }
+
+                // Si termina en punto ("0.") no calculamos
+                if (current.endsWith(".")) {
+                    return;
+                }
+
+                // 5. Calcular valor total
+                double vLinea = (product_price * cnt_valor);
+                String _cnt_valor = String.format(Locale.ENGLISH, "%1$,.2f", vLinea);
+
+                edtValor.setText(_cnt_valor + " " + currency_code);
             }
         });
+
+
 
 
 
@@ -711,30 +759,24 @@ public class ActivityProductDetail extends AppCompatActivity {
 
     private void addProducto(String cnt,String Bonificado) {
 
-        int quantity = 0;
+        double quantity = 0;
 
-        quantity = Integer.parseInt(cnt);
+        quantity = Double.parseDouble(String.valueOf(cnt));
+
+        Log.e("FATAL", "addProducto: " + quantity );
 
         if (quantity <= 0) {
-            ShowDialog("Alerta",
-                    context.getResources().getString(R.string.msg_stock_below_0),
-                    R.color.red_light);
+            ShowDialog("Alerta",context.getResources().getString(R.string.msg_stock_below_0),R.color.red_light);
        /* } else if (quantity > product_quantity) {
             ShowDialog("Alerta",context.getResources().getString(R.string.msg_stock_not_enough),R.color.red_light);*/
         } else {
             ShowDialog("Exito",context.getResources().getString(R.string.msg_success_add_cart),R.color.light_green_400);
 
-            /*
-             * HAY OCACIONES EN QUE EL CLIENTE FALTURA EL MISMO ARTICULO CON LAS MISMA ESPEFICACIONES
-             * ESTO CON EL FIN DE APROVECHAR EL BONIFICADO, POR ESO SE BONITE ESTA VALIDACION, DE QUE SI EXISTE YA EL ITEM
-             * EN EL CARRITO
-             * */
+           /* if (dbhelper.isDataExist(product_id)) {
+                dbhelper.updateData(product_id, quantity, (product_price * quantity));
+            } else {
 
-                       /* if (dbhelper.isDataExist(product_id)) {
-                            dbhelper.updateData(product_id, quantity, (product_price * quantity));
-                        } else {
-
-                        }*/
+            }*/
 
             dbhelper.addData(product_id, product_name, quantity, (product_price * quantity), currency_code, product_image,Bonificado);
         }

@@ -3,12 +3,16 @@ package com.app.gmv3innova;
 public class Config {
 
     //your admin panel url
-    //public static final String ADMIN_PANEL_URL = "http://192.168.1.139/gmv3_innova";
 
-    public  static  final  String ADMIN_PANEL_URL = "https://apps.gumacorp.com/GMV3_INN";
-
+    //public static final String ADMIN_PANEL_URL = "http://192.168.1.139/GMV3_INNOVA";
+    //public  static  final  String ADMIN_PANEL_URL = "https://apps.gumacorp.com/GMV3_INN";
     //public static final String ADMIN_PANEL_URL = "http://186.1.15.166:8448/gmv3_innova";
     //public static final String ADMIN_PANEL_URL = "http://186.1.15.164:8448/GMV3_INN";
+
+
+    //public static final String SERVER = "192.168.1.139";
+    public static final String SERVER = "apps.gumacorp.com";
+    public static final String ADMIN_PANEL_URL = "http://" + SERVER + "/GMV3_INNOVA";
 
 
 
