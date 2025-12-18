@@ -12,7 +12,7 @@ public class Config {
 
     //public static final String SERVER = "192.168.1.139";
     public static final String SERVER = "apps.gumacorp.com";
-    public static final String ADMIN_PANEL_URL = "http://" + SERVER + "/GMV3_INNOVA";
+    public static final String ADMIN_PANEL_URL = "https://" + SERVER + "/GMV3_INN";
 
 
 
