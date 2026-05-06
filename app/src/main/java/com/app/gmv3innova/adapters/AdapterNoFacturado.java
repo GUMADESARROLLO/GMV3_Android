@@ -75,8 +75,23 @@ public class AdapterNoFacturado extends RecyclerView.Adapter<AdapterNoFacturado.
 
         holder.product_name.setText(product.getProduct_name());
 
-        String price = String.format(Locale.ENGLISH, "%1$,.2f", product.getProduct_price());
-        holder.product_venta.setText(("C$ ").concat(price));
+         String priceStr = product.getProduct_price();
+         String displayPrice = "C$ 0.00";
+         if (priceStr != null) {
+             try {
+                 if (priceStr.contains(":")) {
+                     String[] prices = priceStr.split(":");
+                     double p = Double.parseDouble(prices[0]);
+                     displayPrice = "C$ " + String.format(Locale.ENGLISH, "%1$,.2f", p) + (prices.length > 1 ? " ▼" : "");
+                 } else {
+                     double p = Double.parseDouble(priceStr);
+                     displayPrice = "C$ " + String.format(Locale.ENGLISH, "%1$,.2f", p);
+                 }
+             } catch (Exception e) {
+                 displayPrice = "C$ " + priceStr;
+             }
+         }
+         holder.product_venta.setText(displayPrice);
 
         String quantity = String.format(Locale.ENGLISH, "%1$,.2f", product.getProduct_quantity());
         holder.product_cant.setText(quantity.concat(" [" + product.getProduct_und().concat("]")));

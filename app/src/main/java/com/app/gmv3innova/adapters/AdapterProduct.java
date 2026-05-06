@@ -34,6 +34,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHo
         public TextView product_name, product_price,product_cant,product_code;
         public ImageView product_image,product_premiun;
         private LinearLayout lvl_offer;
+        private LinearLayout prices_container;
         public MyViewHolder(View view) {
             super(view);
             product_name = view.findViewById(R.id.product_name);
@@ -43,6 +44,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHo
             product_image = view.findViewById(R.id.category_image);
             product_premiun = view.findViewById(R.id.img_premiun);
             lvl_offer = view.findViewById(R.id.lvl_offer);
+            prices_container = view.findViewById(R.id.prices_container);
 
 
             view.setOnClickListener(new View.OnClickListener() {
@@ -74,8 +76,51 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHo
         final Product product = productListFiltered.get(position);
         holder.product_name.setText(product.getProduct_name());
 
-         String price = String.format(Locale.ENGLISH, "%1$,.2f", product.getProduct_price());
-         holder.product_price.setText(("C$ ").concat(price));
+        holder.prices_container.removeAllViews();
+        String priceStr = product.getProduct_price();
+        if (priceStr != null && priceStr.contains(":")) {
+            String[] prices = priceStr.split(":");
+            StringBuilder PriceFormat = new StringBuilder();
+
+            for (int i = 0; i < prices.length; i++) {
+
+                try {
+                    double p = Double.parseDouble(prices[i]);
+                    String formatted = String.format(Locale.ENGLISH, "%1$,.2f", p);
+
+                    PriceFormat.append("C$ ")
+                            .append(formatted);
+
+                } catch (NumberFormatException e) {
+
+                    PriceFormat.append("C$ ")
+                            .append(prices[i]);
+                }
+
+                // Agregar coma solo si no es el último
+                if (i < prices.length - 1) {
+                    PriceFormat.append(", ");
+                }
+            }
+
+            TextView tv = new TextView(context);
+            tv.setText(PriceFormat.toString());
+            tv.setTextColor(context.getResources().getColor(R.color.txt_price_color));
+            tv.setTypeface(null, android.graphics.Typeface.BOLD);
+            tv.setTextSize(14);
+
+            holder.prices_container.addView(tv);
+        } else {
+            try {
+                double p = Double.parseDouble(priceStr != null ? priceStr : "0");
+                String formatted = String.format(Locale.ENGLISH, "%1$,.2f", p);
+                holder.product_price.setText(("C$ ").concat(formatted));
+            } catch (NumberFormatException e) {
+                holder.product_price.setText("C$ 0.00");
+            }
+            holder.product_price.setPadding(0, 0, (int) context.getResources().getDimension(R.dimen.spacing_small), 0);
+            holder.prices_container.addView(holder.product_price);
+        }
 
         String quantity = String.format(Locale.ENGLISH, "%1$,.2f", product.getProduct_quantity());
         holder.product_cant.setText(quantity.concat(" [" + product.getProduct_und().concat("]")));

@@ -8,7 +8,7 @@ public class Product {
     private String product_name;
     private String category_id;
     private String category_name;
-    private double product_price;
+    private String product_price;
     private String product_status;
     private String product_image;
     private String product_description;
@@ -57,7 +57,7 @@ public class Product {
         return category_name;
     }
 
-    public double getProduct_price() {
+    public String getProduct_price() {
         return product_price;
     }
 

@@ -90,7 +90,8 @@ public class ActivityProductDetail extends AppCompatActivity {
     String  product_id;
     TextView txt_product_name, txt_product_price, txt_product_quantity,txt_id_producto;
     private String product_name, product_image, category_name, product_status, currency_code, product_description,product_bonificado,product_lotes,product_und;
-    private double product_price;
+    private String product_price_str;
+    private double selected_price;
     private double product_quantity;
     WebView txt_product_description;
     ImageView img_product_image;
@@ -148,7 +149,8 @@ public class ActivityProductDetail extends AppCompatActivity {
         product_id = intent.getStringExtra("product_id");
         product_name = intent.getStringExtra("title");
         product_image = intent.getStringExtra("image");
-        product_price = intent.getDoubleExtra("product_price", 0);
+        product_price_str = intent.getStringExtra("product_price");
+        selected_price = parsePrice(product_price_str);
         product_description = intent.getStringExtra("product_description");
         product_quantity = intent.getDoubleExtra("product_quantity", 0);
         product_status = intent.getStringExtra("product_status");
@@ -157,6 +159,63 @@ public class ActivityProductDetail extends AppCompatActivity {
         product_bonificado = intent.getStringExtra("product_bonificado");
         product_lotes = intent.getStringExtra("product_lotes");
         product_und = intent.getStringExtra("product_und");
+    }
+
+    private double parsePrice(String priceStr) {
+        if (priceStr == null) return 0.0;
+        try {
+            if (priceStr.contains(":")) {
+                String[] prices = priceStr.split(":");
+                return Double.parseDouble(prices[0]);
+            }
+            return Double.parseDouble(priceStr);
+        } catch (Exception e) {
+            return 0.0;
+        }
+    }
+
+    private String[] getPricesArray(String priceStr) {
+        if (priceStr == null) return new String[]{"0.00"};
+        if (priceStr.contains(":")) {
+            return priceStr.split(":");
+        }
+        return new String[]{priceStr};
+    }
+
+    private void updatePriceDisplay() {
+        String price = String.format(Locale.ENGLISH, "%1$,.2f", selected_price);
+        txt_product_price.setText(price + " " + currency_code + (product_price_str != null && product_price_str.contains(":") ? " ▼" : ""));
+    }
+
+    private void showPriceSelectionDialog() {
+        final String[] prices = getPricesArray(product_price_str);
+        if (prices.length <= 1) return;
+
+        String[] items = new String[prices.length];
+        for (int i = 0; i < prices.length; i++) {
+            try {
+                double p = Double.parseDouble(prices[i]);
+                items[i] = "C$ " + String.format(Locale.ENGLISH, "%1$,.2f", p);
+            } catch (Exception e) {
+                items[i] = "C$ " + prices[i];
+            }
+        }
+
+        new AlertDialog.Builder(this)
+                .setTitle("Seleccionar precio")
+                .setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        try {
+                            selected_price = Double.parseDouble(prices[which]);
+                            updatePriceDisplay();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                })
+                .setNegativeButton("Cancelar", null)
+                .show();
     }
 
     public void initComponent() {
@@ -187,7 +246,7 @@ public class ActivityProductDetail extends AppCompatActivity {
                Intent intent = new Intent(ActivityProductDetail.this, ActivityActualizarProducto.class);
                 intent.putExtra("producto_sku", product_id);
                 intent.putExtra("producto_name", product_name);
-                intent.putExtra("producto_precio", product_price);
+                intent.putExtra("producto_precio", selected_price);
                 intent.putExtra("producto_exiten", product_quantity);
                 intent.putExtra("product_image", product_image);
                 intent.putExtra("producto_descri", product_description);
@@ -236,7 +295,7 @@ public class ActivityProductDetail extends AppCompatActivity {
 
                     edtQuantity.setVisibility(View.VISIBLE);
                     double cnt_valor = Double.parseDouble(row_arr.get(0));
-                    double vLinea = (product_price * cnt_valor);
+                double vLinea = (selected_price * cnt_valor);
                     String _cnt_valor = String.format(Locale.ENGLISH, "%1$,.2f", vLinea);
                     edtQuantity.setText(_cnt_valor.concat(" ").concat(currency_code));
 
@@ -375,8 +434,13 @@ public class ActivityProductDetail extends AppCompatActivity {
             }
         });
 
-        String price = String.format(Locale.ENGLISH, "%1$,.2f", product_price);
-        txt_product_price.setText(price + " " + currency_code);
+        updatePriceDisplay();
+        txt_product_price.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPriceSelectionDialog();
+            }
+        });
 
         String product_quantity_ = String.format(Locale.ENGLISH, "%1$,.2f", product_quantity);
         txt_product_quantity.setText(product_quantity_ + " " + product_und);
@@ -494,7 +558,7 @@ public class ActivityProductDetail extends AppCompatActivity {
                     edtBonificado.setText(sList.get(position));
                 }
                 double cnt_valor = Double.parseDouble(edtQuantity.getText().toString());
-                double vLinea = (product_price * cnt_valor);
+                double vLinea = (selected_price * cnt_valor);
                 String _cnt_valor = String.format(Locale.ENGLISH, "%1$,.2f", vLinea);
                 edtValor.setText(_cnt_valor.concat(" ").concat(currency_code));
             }
@@ -511,7 +575,7 @@ public class ActivityProductDetail extends AppCompatActivity {
                     edtBonificado.setText(sList.get(position));
                 }
                 double cnt_valor = Double.parseDouble(edtQuantity.getText().toString());
-                double vLinea = (product_price * cnt_valor);
+                double vLinea = (selected_price * cnt_valor);
                 String _cnt_valor = String.format(Locale.ENGLISH, "%1$,.2f", vLinea);
                 edtValor.setText(_cnt_valor.concat(" ").concat(currency_code));
             }
@@ -528,7 +592,7 @@ public class ActivityProductDetail extends AppCompatActivity {
                     edtBonificado.setText(sList.get(position));
                 }
                 double cnt_valor = Double.parseDouble(edtQuantity.getText().toString());
-                double vLinea = (product_price * cnt_valor);
+                double vLinea = (selected_price * cnt_valor);
                 String _cnt_valor = String.format(Locale.ENGLISH, "%1$,.2f", vLinea);
                 edtValor.setText(_cnt_valor.concat(" ").concat(currency_code));
             }
@@ -545,7 +609,7 @@ public class ActivityProductDetail extends AppCompatActivity {
                     edtBonificado.setText(sList.get(position));
                 }
                 double cnt_valor = Double.parseDouble(edtQuantity.getText().toString());
-                double vLinea = (product_price * cnt_valor);
+                double vLinea = (selected_price * cnt_valor);
                 String _cnt_valor = String.format(Locale.ENGLISH, "%1$,.2f", vLinea);
                 edtValor.setText(_cnt_valor.concat(" ").concat(currency_code));
             }
@@ -562,7 +626,7 @@ public class ActivityProductDetail extends AppCompatActivity {
                     edtBonificado.setText(sList.get(position));
                 }
                 double cnt_valor = Double.parseDouble(edtQuantity.getText().toString());
-                double vLinea = (product_price * cnt_valor);
+                double vLinea = (selected_price * cnt_valor);
                 String _cnt_valor = String.format(Locale.ENGLISH, "%1$,.2f", vLinea);
                 edtValor.setText(_cnt_valor.concat(" ").concat(currency_code));
             }
@@ -579,7 +643,7 @@ public class ActivityProductDetail extends AppCompatActivity {
                     edtBonificado.setText(sList.get(position));
                 }
                 double cnt_valor = Double.parseDouble(edtQuantity.getText().toString());
-                double vLinea = (product_price * cnt_valor);
+                double vLinea = (selected_price * cnt_valor);
                 String _cnt_valor = String.format(Locale.ENGLISH, "%1$,.2f", vLinea);
                 edtValor.setText(_cnt_valor.concat(" ").concat(currency_code));
             }
@@ -596,7 +660,7 @@ public class ActivityProductDetail extends AppCompatActivity {
                     edtBonificado.setText(sList.get(position));
                 }
                 double cnt_valor = Double.parseDouble(edtQuantity.getText().toString());
-                double vLinea = (product_price * cnt_valor);
+                double vLinea = (selected_price * cnt_valor);
                 String _cnt_valor = String.format(Locale.ENGLISH, "%1$,.2f", vLinea);
                 edtValor.setText(_cnt_valor.concat(" ").concat(currency_code));
             }
@@ -613,7 +677,7 @@ public class ActivityProductDetail extends AppCompatActivity {
                     edtBonificado.setText(sList.get(position));
                 }
                 double cnt_valor = Double.parseDouble(edtQuantity.getText().toString());
-                double vLinea = (product_price * cnt_valor);
+                double vLinea = (selected_price * cnt_valor);
                 String _cnt_valor = String.format(Locale.ENGLISH, "%1$,.2f", vLinea);
                 edtValor.setText(_cnt_valor.concat(" ").concat(currency_code));
             }
@@ -630,7 +694,7 @@ public class ActivityProductDetail extends AppCompatActivity {
                     edtBonificado.setText(sList.get(position));
                 }
                 double cnt_valor = Double.parseDouble(edtQuantity.getText().toString());
-                double vLinea = (product_price * cnt_valor);
+                double vLinea = (selected_price * cnt_valor);
                 String _cnt_valor = String.format(Locale.ENGLISH, "%1$,.2f", vLinea);
                 edtValor.setText(_cnt_valor.concat(" ").concat(currency_code));
             }
@@ -647,7 +711,7 @@ public class ActivityProductDetail extends AppCompatActivity {
                     edtBonificado.setText(sList.get(position));
                 }
                 double cnt_valor = Double.parseDouble(edtQuantity.getText().toString());
-                double vLinea = (product_price * cnt_valor);
+                double vLinea = (selected_price * cnt_valor);
                 String _cnt_valor = String.format(Locale.ENGLISH, "%1$,.2f", vLinea);
                 edtValor.setText(_cnt_valor.concat(" ").concat(currency_code));
             }
@@ -715,7 +779,7 @@ public class ActivityProductDetail extends AppCompatActivity {
                 }
 
                 // 5. Calcular valor total
-                double vLinea = (product_price * cnt_valor);
+                double vLinea = (selected_price * cnt_valor);
                 String _cnt_valor = String.format(Locale.ENGLISH, "%1$,.2f", vLinea);
 
                 edtValor.setText(_cnt_valor + " " + currency_code);
@@ -778,7 +842,7 @@ public class ActivityProductDetail extends AppCompatActivity {
 
             }*/
 
-            dbhelper.addData(product_id, product_name, quantity, (product_price * quantity), currency_code, product_image,Bonificado);
+            dbhelper.addData(product_id, product_name, quantity, (selected_price * quantity), currency_code, product_image,Bonificado);
         }
     }
 
@@ -953,7 +1017,7 @@ public class ActivityProductDetail extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("image/*");
                 intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
-                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_product_section_one) + " " + product_name + " " + getString(R.string.share_product_section_two) + " " + String.format(Locale.ENGLISH, "%1$,.0f", product_price) + " " + currency_code + getString(R.string.share_product_section_three) + "\n" + "https://play.google.com/store/apps/details?id=" + getPackageName());
+                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_product_section_one) + " " + product_name + " " + getString(R.string.share_product_section_two) + " " + String.format(Locale.ENGLISH, "%1$,.0f", selected_price) + " " + currency_code + getString(R.string.share_product_section_three) + "\n" + "https://play.google.com/store/apps/details?id=" + getPackageName());
                 startActivity(Intent.createChooser(intent, "Share Image"));
                 pDialog.dismiss();
             } else {
@@ -962,7 +1026,7 @@ public class ActivityProductDetail extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("image/*");
                 intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
-                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_product_section_one) + " " + product_name + " " + getString(R.string.share_product_section_two) + " " + product_price + " " + currency_code + getString(R.string.share_product_section_three) + "\n" + "https://play.google.com/store/apps/details?id=" + getPackageName());
+                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_product_section_one) + " " + product_name + " " + getString(R.string.share_product_section_two) + " " + selected_price + " " + currency_code + getString(R.string.share_product_section_three) + "\n" + "https://play.google.com/store/apps/details?id=" + getPackageName());
                 startActivity(Intent.createChooser(intent, "Share Image"));
                 pDialog.dismiss();
             }
